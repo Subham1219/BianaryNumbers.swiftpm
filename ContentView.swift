@@ -4,22 +4,22 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
-                NavigationLink(destination: DecimalToBinaryView()) {
+                NavigationLink(destination: DecimalToBinary()) {
                     Text("Decimal to Binary")
                 }
                 NavigationLink(destination: BinaryToDecimalView()) {
                     Text("Binary to Decimal")
                 }
-                NavigationLink(destination: DecimalToHexadecimalView()) {
+                NavigationLink(destination: DecimalToHexadecimal()) {
                     Text("Decimal to Hexadecimal")
                 }
-                NavigationLink(destination: HexadecimalToDecimalView()) {
+                NavigationLink(destination: HexadecimalToDecimal()) {
                     Text("Hexadecimal to Decimal")
                 }
                 NavigationLink(destination: BinaryToHexadecimalView()) {
                     Text("Binary to Hexadecimal")
                 }
-                NavigationLink(destination: HexadecimalToBinaryView()) {
+                NavigationLink(destination: HexadecimalToBinary()) {
                     Text("Hexadecimal to Binary")
                 }
             }
