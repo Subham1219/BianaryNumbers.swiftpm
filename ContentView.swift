@@ -7,7 +7,7 @@ struct ContentView: View {
                 NavigationLink(destination: DecimalToBinary()) {
                     Text("Decimal to Binary")
                 }
-                NavigationLink(destination: BinaryToDecimalView()) {
+                NavigationLink(destination: BinaryToDecimal()) {
                     Text("Binary to Decimal")
                 }
                 NavigationLink(destination: DecimalToHexadecimal()) {
@@ -16,7 +16,7 @@ struct ContentView: View {
                 NavigationLink(destination: HexadecimalToDecimal()) {
                     Text("Hexadecimal to Decimal")
                 }
-                NavigationLink(destination: BinaryToHexadecimalView()) {
+                NavigationLink(destination: BinaryToHexadecimal()) {
                     Text("Binary to Hexadecimal")
                 }
                 NavigationLink(destination: HexadecimalToBinary()) {
