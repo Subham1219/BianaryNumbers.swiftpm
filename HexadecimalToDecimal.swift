@@ -26,10 +26,29 @@ struct HexadecimalToDecimal: View {
     }
 
     func convertToDecimal() {
-        if let hexValue = Int(hexadecimalInput, radix: 16) {
-            decimalResult = "\(hexValue)"
-        } else {
-            decimalResult = "Invalid input"
+        let hexDigits: [Character] = Array(hexadecimalInput.uppercased())
+        var decimalValue = 0
+
+        for hexDigit in hexDigits {
+            if let digitValue = hexDigit.hexDigitValue {
+                decimalValue = decimalValue * 16 + digitValue
+            } else {
+                decimalResult = "Invalid input"
+                return
+            }
+        }
+
+        decimalResult = String(decimalValue)
+    }
+}
+
+extension Character {
+    var hexDigitValue: Int? {
+        switch self {
+        case "0"..."9": return Int(String(self))
+        case "A"..."F": return Int(10 + self.unicodeScalars.first!.value - Unicode.Scalar("A").value)
+        case "a"..."f": return Int(10 + self.unicodeScalars.first!.value - Unicode.Scalar("a").value)
+        default: return nil
         }
     }
 }

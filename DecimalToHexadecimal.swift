@@ -27,9 +27,33 @@ struct DecimalToHexadecimal: View {
 
     func convertToHexadecimal() {
         if let decimalValue = Int(decimalInput) {
-            hexadecimalResult = String(decimalValue, radix: 16).uppercased()
+            var result = ""
+            var value = decimalValue
+
+            while value > 0 {
+                let remainder = value % 16
+                let digit: String
+
+                if remainder < 10 {
+                    digit = "\(remainder)"
+                } else {
+                    let unicodeScalarValue = Unicode.Scalar(55 + remainder)
+                    digit = String(Character(unicodeScalarValue!))
+                }
+
+                result = digit + result
+                value /= 16
+            }
+
+            hexadecimalResult = result.isEmpty ? "0" : result
         } else {
             hexadecimalResult = "Invalid input"
         }
+    }
+}
+
+struct DecimalToHexadecimal_Previews: PreviewProvider {
+    static var previews: some View {
+        DecimalToHexadecimal()
     }
 }

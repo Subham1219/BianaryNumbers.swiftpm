@@ -25,6 +25,14 @@ struct ContentView: View {
             }
             .navigationBarTitle("Number Converter")
         }
+        .background(
+            LinearGradient(
+                gradient: Gradient(colors: [Color.blue, Color.purple]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .edgesIgnoringSafeArea(.all)
+        )
     }
 }
 
