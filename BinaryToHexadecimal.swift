@@ -40,11 +40,24 @@ struct BinaryToHexadecimal: View {
     }
     
     func convertBinaryToHex() {
-        guard let binaryNumber = Int(binaryInput, radix: 2) else {
-            hexadecimalOutput = "Invalid binary input!"
-            return
-        }
-        
-        hexadecimalOutput = String(binaryNumber, radix: 16).uppercased()
-    }
-}
+           let binaryString = binaryInput.trimmingCharacters(in: .whitespacesAndNewlines)
+           let binaryArray = binaryString.map { String($0) }
+           
+           var decimalValue = 0
+           var exponent = binaryArray.count - 1
+           
+           for digit in binaryArray {
+               if let binaryDigit = Int(digit) {
+                   decimalValue += binaryDigit * Int(pow(2.0, Double(exponent)))
+                   exponent -= 1
+               } else {
+                   hexadecimalOutput = "Invalid Input"
+                   return
+               }
+           }
+           
+           let hexadecimalString = String(format: "%X", decimalValue)
+           hexadecimalOutput = hexadecimalString
+       }
+   }
+

@@ -39,10 +39,23 @@ struct BinaryToDecimal: View {
     }
     
     func convertBinaryToDecimal() {
-        guard let binaryNumber = Int(binaryInput, radix: 2) else {
-            decimalOutput = "Invalid binary input!"
-            return
-        }
-        decimalOutput = String(binaryNumber)
-    }
-}
+           let binaryString = binaryInput.trimmingCharacters(in: .whitespacesAndNewlines)
+           let binaryArray = binaryString.map { String($0) }
+           
+           var decimalValue = 0
+           var exponent = binaryArray.count - 1
+           
+           for digit in binaryArray {
+               if let binaryDigit = Int(digit) {
+                   decimalValue += binaryDigit * Int(pow(2.0, Double(exponent)))
+                   exponent -= 1
+               } else {
+                   decimalOutput = "Invalid Input"
+                   return
+               }
+           }
+           
+           decimalOutput = "\(decimalValue)"
+       }
+   }
+

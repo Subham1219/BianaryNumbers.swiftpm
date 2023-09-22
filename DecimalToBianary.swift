@@ -2,6 +2,7 @@ import SwiftUI
 
 struct DecimalToBinary: View {
     @State private var decimalInput = ""
+    @State private var binaryOutput = ""
     @State private var binaryResult = ""
 
     var body: some View {
@@ -26,10 +27,23 @@ struct DecimalToBinary: View {
     }
 
     func convertToBinary() {
-        if let decimalValue = Int(decimalInput) {
-            binaryResult = String(decimalValue, radix: 2)
-        } else {
-            binaryResult = "Invalid input"
+            if let decimalNumber = Int(decimalInput) {
+                var binaryString = ""
+                var num = decimalNumber
+                
+                if num == 0 {
+                    binaryString = "0"
+                } else {
+                    while num > 0 {
+                        let remainder = num % 2
+                        binaryString = String(remainder) + binaryString
+                        num /= 2
+                    }
+                }
+                
+                binaryOutput = binaryString
+            } else {
+                binaryOutput = "Invalid Input"
+            }
         }
-    }
 }
